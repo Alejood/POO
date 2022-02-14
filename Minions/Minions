@@ -1,0 +1,30 @@
+Minions 
+Un importante científico local nos pide que desarrollemos un programa que modele el comportamiento habitual de sus empleados, con el fin de organizar mejor la asignación de trabajo. Estos empleados, lejos de ser trabajadores normales, son unas criaturas genéticamente diseñadas por él para adecuarse mejor a las distintas tareas que deben realizarse en su laboratorio.
+Según nos cuentan, existen dos razas de empleados: Bíclopes y Cíclopes.
+Los Bíclopes tienen dos ojos y son bastante útiles para todas las tareas, pero su estamina está limitada a un máximo de 10 puntos.
+Los Cíclopes tienen un solo ojo, lo cual hace que les cueste bastante apuntar un arma (sólo aciertan la mitad de los disparos), pero siempre están entusiasmados y no tienen un límite a la estamina que pueden tener.
+También sabemos que, en el laboratorio, cada empleado tiene asignado un rol. Este rol se elige arbitrariamente, podría cambiar de un día para el otro y no depende de la raza del empleado (cualquier empleado podría tener cualquier rol). Los posibles roles existentes son soldado, obrero y mucama.
+Los soldados están equipados con un arma que les facilita la defensa del laboratorio. Cada vez que un soldado usa su arma para defender un sector, gana práctica y se vuelve un poquito mejor con ella, incrementando en 2 el daño que causa. Si por algún motivo el soldado cambia de rol, toda la práctica ganada se pierde.
+Los obreros tienen un cinturón con varias herramientas (cada uno puede tener herramientas distintas).
+Las mucamas prefieren tener las manos limpias, así que van a negarse a defender sectores.
+En cualquier momento, el científico podría ordenarle a cualquiera de sus empleados que realice una tarea en el laboratorio. Estas tareas, según él nos las detalló, podría ser una de las siguientes:
+Arreglar una máquina: Las máquinas tienen cierta complejidad asociada (puede ser desde un candado hasta un reactor nuclear) y cada una podría requerir distintas herramientas para arreglarla.
+El requerimiento para poder arreglar una máquina es tener tanta estamina como complejidad tenga la máquina y tener las herramientas necesarias para arreglarla (nótese que, si la máquina no requiere de ninguna herramienta, cualquier empleado con estamina suficiente puede arreglarla).
+Trabajar en una máquina es agotador, así que los empleados pierden tantos puntos de estamina como complejidad de la máquina al arreglarla.
+La dificultad para este tipo de tareas es el doble de la complejidad de la máquina.
+Defender un sector: El laboratorio está dividido en sectores, los cuales ocasionalmente pueden estar a la merced de alguna amenaza.
+Defender un sector requiere que el empleado NO sea mucama y tenga una fuerza igual o mayor al grado de amenaza. La fuerza de un empleado es la mitad de su estamina + 2, con ciertas variaciones:
+•	Los Soldados suman a su fuerza el daño extra por práctica.
+•	Los Cíclopes, que no apuntan bien y sólo impactan la mitad de los ataques, usan la mitad de su fuerza total (el cálculo para un cíclope obrero sería: fuerza / 2 mientras que para un cíclope soldado sería: (fuerza + práctica) / 2).
+Al defender un sector, los empleados pierden la mitad de su estamina a menos que sean soldados (su entrenamiento los tiene acostumbrados al combate, por lo cual no pierden estamina al defender).
+La dificultad de esta tarea es el grado de amenaza para los Bíclopes y el doble para los Cíclopes.
+Limpiar un sector: Ocasionalmente el laboratorio se ensucia y depende de los empleados mantenerlo en orden. La dificultad de este tipo de tareas es 10, pero el científico quiere poder cambiar este valor para todas las tareas de limpieza más adelante.
+Para limpiar se requiere tener al menos 4 puntos de estamina si el sector es grande y 1 en cualquier otro caso y al limpiar se pierde la estamina requerida para limpiar el sector, a menos que el empleado tenga rol de mucama. Las mucamas siempre pueden limpiar y no pierden estamina al hacerlo.
+A cualquier empleado puede ordenársele que realice cualquier tarea, independientemente de su raza o rol. En caso de cumplir con los requerimientos el empleado la realiza en el momento; de lo contrario debe lanzar un error ya que no puede hacer lo pedido.
+Finalmente, para recuperar la estamina perdida, los empleados pueden comer una fruta. Las bananas recuperan 10 puntos, las manzanas 5 y las uvas 1.
+Se pide implementar un programa en Smalltalk, junto con un workspace donde se muestre el punto de entrada de cada requerimiento, que refleje el modelo descrito y permita:
+1.	Que un empleado pueda comer una fruta para recuperar estamina.
+2.	Conocer la experiencia de un empleado, que se obtiene a partir de la cantidad de tareas realizadas multiplicada por la sumatoria de sus dificultades.
+3.	Hacer que un empleado realice una tarea (que arregle una máquina, defienda o limpie un sector del laboratorio), teniendo en cuenta las restricciones descritas anteriormente.
+4.	Agregar un nuevo rol: El Capataz. Los capataces tienen a cargo a otros empleados. Cuando se le pide a un capataz que haga algo, él se lo delega a su subordinado más experimentado de los que puedan realizar la tarea. Si no hay ninguno que pueda hacerla, debe hacerla él.
+
