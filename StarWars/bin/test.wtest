@@ -1,0 +1,40 @@
+import StarWars.*
+
+describe "Tests de Star Wars"{
+
+const sidious = new Maestro(inteligencia = 10,valentia = 3, midiclorianos = 1000, ladoFuerza = new LadoOscuro(), sableDeLuz = new Equipo(potencia = 40))
+const anakin = new Maestro(inteligencia = 100,valentia = 80, midiclorianos = 27700, ladoFuerza = new LadoLuminoso(), sableDeLuz = new Equipo(potencia = 250))
+const abandono = new Suceso(cargaEmocional = -2000) 	
+const arrepentimiento = new Suceso(cargaEmocional = 5000) 	
+
+const halcon = new Equipo(potencia=20)
+const han = new Soldado(inteligencia= 10,valentia=5)
+const extra = new Habitante(inteligencia=1,valentia = 2)
+const arma = new Equipo(potencia=100)
+const otraArma = new Equipo(potencia=5)
+
+
+test "un soldado con un arma"{
+	han.tomar(halcon)
+	assert.equals(  35, han.poder())
+}
+test "un soldado con varias arma, algunas inutiles"{
+	han.tomar(halcon)
+	han.tomar(arma)
+	han.tomar(otraArma)
+	assert.equals(  135, han.poder())
+}
+
+test "testAnakinPasaAlLadoOscuro" {
+	anakin.vivirSuceso(abandono)
+	assert.equals("Lado Oscuro", anakin.ladoFuerza().descripcion())
+}
+
+test "testVaderPasaAlLadoLuminoso" {
+	anakin.vivirSuceso(abandono)
+	const darthVader = anakin 
+	darthVader.vivirSuceso(arrepentimiento)
+	assert.equals("Lado Luminoso", darthVader.ladoFuerza().descripcion())
+}
+
+}
